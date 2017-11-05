@@ -22,6 +22,7 @@ env:
   global:
     - USE_YARN=yes
   matrix:
+    - TEST_SUITE=simple NODE_PATH=''
     - TEST_SUITE=simple
     - TEST_SUITE=installs
     - TEST_SUITE=kitchensink
