@@ -33,7 +33,7 @@ skip_commits:
 test_script:
   - node --version
   - npm --version
-  - bash -lc "sh tasks/e2e-%test_suite%.sh"
+  - sh; ./tasks/e2e-%test_suite%.sh
 
 init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
