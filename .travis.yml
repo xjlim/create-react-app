@@ -20,7 +20,7 @@ script:
  - 'if [ $TEST_SUITE = "kitchensink" ]; then tasks/e2e-kitchensink.sh; fi'
 env:
   global:
-    - USE_YARN=no
+    - USE_YARN=yes
   matrix:
     - TEST_SUITE=simple
     - TEST_SUITE=installs

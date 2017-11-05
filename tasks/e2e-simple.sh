@@ -22,7 +22,7 @@ function cleanup {
   cd "$root_path"
   # Uncomment when snapshot testing is enabled by default:
   # rm ./packages/react-scripts/template/src/__snapshots__/App.test.js.snap
-  rm -rf "$temp_cli_path" $temp_app_path
+  # rm -rf "$temp_cli_path" $temp_app_path
 }
 
 # Error messages are redirected to stderr
@@ -148,20 +148,20 @@ fi
 # We removed the postinstall, so do it manually here
 node bootstrap.js
 
-# Lint own code
-./node_modules/.bin/eslint --max-warnings 0 packages/babel-preset-react-app/
-./node_modules/.bin/eslint --max-warnings 0 packages/create-react-app/
-./node_modules/.bin/eslint --max-warnings 0 packages/eslint-config-react-app/
-./node_modules/.bin/eslint --max-warnings 0 packages/react-dev-utils/
-./node_modules/.bin/eslint --max-warnings 0 packages/react-scripts/
-cd packages/react-error-overlay/
-./node_modules/.bin/eslint --max-warnings 0 src/
-npm test
-npm run build:prod
-cd ../..
-cd packages/react-dev-utils/
-npm test
-cd ../..
+# # Lint own code
+# ./node_modules/.bin/eslint --max-warnings 0 packages/babel-preset-react-app/
+# ./node_modules/.bin/eslint --max-warnings 0 packages/create-react-app/
+# ./node_modules/.bin/eslint --max-warnings 0 packages/eslint-config-react-app/
+# ./node_modules/.bin/eslint --max-warnings 0 packages/react-dev-utils/
+# ./node_modules/.bin/eslint --max-warnings 0 packages/react-scripts/
+# cd packages/react-error-overlay/
+# ./node_modules/.bin/eslint --max-warnings 0 src/
+# npm test
+# npm run build:prod
+# cd ../..
+# cd packages/react-dev-utils/
+# npm test
+# cd ../..
 
 # ******************************************************************************
 # First, test the create-react-app development environment.
@@ -178,12 +178,12 @@ exists build/static/media/*.svg
 exists build/favicon.ico
 
 # Run tests with CI flag
-CI=true npm test
+# CI=true npm test
 # Uncomment when snapshot testing is enabled by default:
 # exists template/src/__snapshots__/App.test.js.snap
 
 # Test local start command
-npm start -- --smoke-test
+# npm start -- --smoke-test
 
 # ******************************************************************************
 # Next, pack react-scripts and create-react-app so we can verify they work.
@@ -314,18 +314,18 @@ exists build/static/media/*.svg
 exists build/favicon.ico
 
 # Run tests with CI flag
-CI=true npm test
+# CI=true npm test
 # Uncomment when snapshot testing is enabled by default:
 # exists src/__snapshots__/App.test.js.snap
 
 # Test the server
-npm start -- --smoke-test
+# npm start -- --smoke-test
 
 # Test environment handling
-verify_env_url
+# verify_env_url
 
 # Test reliance on webpack internals
-verify_module_scope
+# verify_module_scope
 
 # ******************************************************************************
 # Finally, let's check that everything still works after ejecting.
@@ -360,18 +360,18 @@ exists build/favicon.ico
 # `CI=true npm test` won't work here because `npm test` becomes just `jest`.
 # We should either teach Jest to respect CI env variable, or make
 # `scripts/test.js` survive ejection (right now it doesn't).
-npm test -- --watch=no
+# npm test -- --watch=no
 # Uncomment when snapshot testing is enabled by default:
 # exists src/__snapshots__/App.test.js.snap
 
 # Test the server
-npm start -- --smoke-test
+# npm start -- --smoke-test
 
 # Test environment handling
-verify_env_url
+# verify_env_url
 
 # Test reliance on webpack internals
-verify_module_scope
+# verify_module_scope
 
 # Cleanup
-cleanup
+# cleanup
