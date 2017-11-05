@@ -6,7 +6,6 @@ environment:
       test_suite: "kitchensink"
     - nodejs_version: 6
       test_suite: "kitchensink"
-  appveyor_rdp_password: "kitchensink"
 
 cache:
   - node_modules -> appveyor.cleanup-cache.txt
