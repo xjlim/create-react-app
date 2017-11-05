@@ -197,7 +197,7 @@ install_package "$temp_module_path/node_modules/test-integrity"
 
 # Test the build
 REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   PUBLIC_URL=http://www.example.org/spa/ \
   npm run build
 
@@ -208,7 +208,7 @@ exists build/static/js/main.*.js
 # Unit tests
 REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
   CI=true \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   NODE_ENV=test \
   npm test -- --no-cache --testPathPattern=src
 
@@ -216,19 +216,19 @@ REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
 tmp_server_log=`mktemp`
 PORT=3001 \
   REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   nohup npm start &>$tmp_server_log &
 grep -q 'You can now view' <(tail -f $tmp_server_log)
 E2E_URL="http://localhost:3001" \
   REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  CI=true NODE_PATH=src \
+  CI=true NODE_PATH="$NODE_PATH" \
   NODE_ENV=development \
   node_modules/.bin/mocha --require babel-register --require babel-polyfill integration/*.test.js
 
 # Test "production" environment
 E2E_FILE=./build/index.html \
   CI=true \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   NODE_ENV=production \
   PUBLIC_URL=http://www.example.org/spa/ \
   node_modules/.bin/mocha --require babel-register --require babel-polyfill integration/*.test.js
@@ -259,7 +259,7 @@ install_package "$temp_module_path/node_modules/test-integrity"
 
 # Test the build
 REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   PUBLIC_URL=http://www.example.org/spa/ \
   npm run build
 
@@ -270,7 +270,7 @@ exists build/static/js/main.*.js
 # Unit tests
 REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
   CI=true \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   NODE_ENV=test \
   npm test -- --no-cache --testPathPattern=src
 
@@ -278,12 +278,12 @@ REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
 tmp_server_log=`mktemp`
 PORT=3002 \
   REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   nohup npm start &>$tmp_server_log &
 grep -q 'You can now view' <(tail -f $tmp_server_log)
 E2E_URL="http://localhost:3002" \
   REACT_APP_SHELL_ENV_MESSAGE=fromtheshell \
-  CI=true NODE_PATH=src \
+  CI=true NODE_PATH="$NODE_PATH" \
   NODE_ENV=development \
   node_modules/.bin/mocha --require babel-register --require babel-polyfill integration/*.test.js
 
@@ -291,7 +291,7 @@ E2E_URL="http://localhost:3002" \
 E2E_FILE=./build/index.html \
   CI=true \
   NODE_ENV=production \
-  NODE_PATH=src \
+  NODE_PATH="$NODE_PATH" \
   PUBLIC_URL=http://www.example.org/spa/ \
   node_modules/.bin/mocha --require babel-register --require babel-polyfill integration/*.test.js
 
