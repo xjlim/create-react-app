@@ -8,12 +8,14 @@ environment:
       test_suite: "installs"
     - nodejs_version: 8
       test_suite: "kitchensink"
+      NODE_PATH: "src"
     - nodejs_version: 6
       test_suite: "simple"
     - nodejs_version: 6
       test_suite: "installs"
     - nodejs_version: 6
       test_suite: "kitchensink"
+      NODE_PATH: "src"
 
 cache:
   - node_modules -> appveyor.cleanup-cache.txt
